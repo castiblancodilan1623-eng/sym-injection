@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>S&M INJECTION | Computadores y Partes Eléctricas</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #080808;
+            color: white;
+        }
+
+        /* ---------- NAVEGACIÓN ---------- */
+
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+
+            background: rgba(5, 5, 5, 0.95);
+            border-bottom: 1px solid #b00000;
+
+            padding: 18px 7%;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: 900;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: #e00000;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 25px;
+            font-size: 14px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #e00000;
+        }
+
+
+        /* ---------- PORTADA ---------- */
+
+        .hero {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    padding: 60px 8%;
+    background:
+        linear-gradient(rgba(0,0,0,.68), rgba(0,0,0,.82)),
+        url("imagenes/marca.jpg") center center / cover no-repeat;
+}
+        /* Efecto de circuitos */
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+
+            background-image:
+                linear-gradient(90deg, rgba(255,0,0,.08) 1px, transparent 1px),
+                linear-gradient(rgba(255,0,0,.08) 1px, transparent 1px);
+
+            background-size: 55px 55px;
+
+            opacity: .35;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+        }
+
+        .small-title {
+            color: #e00000;
+            font-size: 16px;
+            font-weight: bold;
+            letter-spacing: 4px;
+            margin-bottom: 15px;
+        }
+
+        .hero h1 {
+            font-size: clamp(48px, 8vw, 90px);
+            line-height: .95;
+            font-weight: 900;
+            margin-bottom: 15px;
+        }
+
+        .hero h1 span {
+            color: #e00000;
+        }
+
+        .hero h2 {
+            font-size: clamp(22px, 3vw, 34px);
+            margin-bottom: 25px;
+        }
+
+        .hero p {
+            color: #cccccc;
+            font-size: 19px;
+            line-height: 1.7;
+            max-width: 700px;
+            margin-bottom: 35px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 16px 25px;
+
+            text-decoration: none;
+            color: white;
+
+            font-weight: bold;
+
+            border-radius: 4px;
+
+            background: #e00000;
+
+            transition: .3s;
+        }
+
+        .btn:hover {
+            background: #ff2222;
+            transform: translateY(-3px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid #e00000;
+        }
+
+        .btn-outline:hover {
+            background: #e00000;
+        }
+
+
+        /* ---------- SECCIONES ---------- */
+
+        .section {
+            padding: 90px 8%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 55px;
+        }
+
+        .section-title h2 {
+            font-size: 42px;
+            margin-bottom: 10px;
+        }
+
+        .section-title span {
+            color: #e00000;
+        }
+
+        .section-title p {
+            color: #999;
+        }
+
+
+        /* ---------- SERVICIOS ---------- */
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 22px;
+        }
+
+        .card {
+            background: #111;
+
+            border: 1px solid #292929;
+            border-top: 3px solid #e00000;
+
+            padding: 30px 25px;
+
+            border-radius: 6px;
+
+            transition: .3s;
+        }
+
+        .card:hover {
+            transform: translateY(-7px);
+            border-color: #e00000;
+            box-shadow: 0 10px 35px rgba(180, 0, 0, .2);
+        }
+
+        .icon {
+            font-size: 38px;
+            margin-bottom: 20px;
+        }
+
+        .card h3 {
+            font-size: 20px;
+            margin-bottom: 13px;
+        }
+
+        .card p {
+            color: #aaa;
+            line-height: 1.6;
+        }
+
+
+        /* ---------- PRODUCTOS ---------- */
+
+        .products {
+            background: #0d0d0d;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 15px;
+        }
+
+        .product {
+            padding: 25px 15px;
+
+            text-align: center;
+
+            background: #151515;
+            border: 1px solid #292929;
+
+            border-radius: 5px;
+
+            transition: .3s;
+        }
+
+        .product:hover {
+            border-color: #e00000;
+            transform: translateY(-4px);
+        }
+
+        .product-icon {
+            font-size: 30px;
+            margin-bottom: 12px;
+        }
+
+        .product h3 {
+            font-size: 16px;
+        }
+
+
+        /* ---------- CONFIANZA ---------- */
+
+        .trust {
+            text-align: center;
+            background:
+                linear-gradient(rgba(100,0,0,.15), rgba(100,0,0,.15)),
+                #090909;
+        }
+
+        .trust-box {
+            max-width: 900px;
+            margin: auto;
+        }
+
+        .trust-box h2 {
+            font-size: 40px;
+            margin-bottom: 20px;
+        }
+
+        .trust-box h2 span {
+            color: #e00000;
+        }
+
+        .trust-box p {
+            color: #bbb;
+            font-size: 18px;
+            line-height: 1.8;
+        }
+
+
+        /* ---------- CONTACTO ---------- */
+
+        .contact {
+            background: #111;
+        }
+
+        .contact-container {
+            max-width: 1000px;
+            margin: auto;
+
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .contact-box {
+            background: #080808;
+            padding: 35px;
+            border-left: 3px solid #e00000;
+        }
+
+        .contact-box h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .contact-box p {
+            color: #bbb;
+            line-height: 1.8;
+            margin-bottom: 8px;
+        }
+
+        .contact-box strong {
+            color: white;
+        }
+
+
+        /* ---------- FOOTER ---------- */
+
+        footer {
+            background: #050505;
+            padding: 30px 8%;
+            text-align: center;
+            color: #777;
+            border-top: 1px solid #222;
+        }
+
+        footer strong {
+            color: #e00000;
+        }
+
+
+        /* ---------- BOTÓN WHATSAPP ---------- */
+
+        .whatsapp {
+            position: fixed;
+
+            right: 25px;
+            bottom: 25px;
+
+            width: 58px;
+            height: 58px;
+
+            border-radius: 50%;
+
+            background: #e00000;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            color: white;
+            text-decoration: none;
+
+            font-size: 27px;
+
+            z-index: 2000;
+
+            box-shadow: 0 5px 20px rgba(0,0,0,.5);
+        }
+
+
+        /* ---------- CELULAR ---------- */
+
+        @media (max-width: 900px) {
+
+            header {
+                padding: 15px 5%;
+            }
+
+            nav a {
+                margin-left: 10px;
+                font-size: 12px;
+            }
+
+            .cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .product-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+        }
+
+
+        @media (max-width: 600px) {
+
+            header {
+                position: relative;
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 10px;
+            }
+
+            nav a {
+                margin: 0;
+            }
+
+            .hero {
+                min-height: 90vh;
+                padding: 70px 6%;
+            }
+
+            .hero h1 {
+                font-size: 48px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .section {
+                padding: 65px 6%;
+            }
+
+            .section-title h2 {
+                font-size: 32px;
+            }
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+            .product-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+<!-- NAVEGACIÓN -->
+
+<header>
+
+    <div class="logo">
+        S<span>&</span>M INJECTION
+    </div>
+
+    <nav>
+        <a href="#inicio">INICIO</a>
+        <a href="#servicios">SERVICIOS</a>
+        <a href="#productos">PRODUCTOS</a>
+        <a href="#contacto">CONTACTO</a>
+    </nav>
+
+</header>
+
+
+
+<!-- PORTADA -->
+
+<section class="hero" id="inicio">
+
+    <div class="hero-content">
+
+        <div class="small-title">
+            ELECTRÓNICA AUTOMOTRIZ
+        </div>
+
+        <h1>
+            S<span>&</span>M<br>
+            INJECTION
+        </h1>
+
+        <h2>
+            Computadores y Partes Eléctricas
+        </h2>
+
+        <p>
+            Venta, programación, instalación y diagnóstico
+            computarizado para todo tipo de vehículos.
+            Soluciones precisas y transparentes para la
+            electrónica de tu vehículo.
+        </p>
+
+        <div class="buttons">
+
+            <a class="btn"
+               href="https://wa.me/573057424133"
+               target="_blank">
+                📱 CONTACTAR POR WHATSAPP
+            </a>
+
+            <a class="btn btn-outline"
+               href="https://maps.app.goo.gl/zHQkfVE9PBnKwtms9"
+               target="_blank">
+                📍 CÓMO LLEGAR
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- SERVICIOS -->
+
+<section class="section" id="servicios">
+
+    <div class="section-title">
+
+        <h2>
+            NUESTROS <span>SERVICIOS</span>
+        </h2>
+
+        <p>
+            Especialistas en soluciones electrónicas automotrices
+        </p>
+
+    </div>
+
+
+    <div class="cards">
+
+        <div class="card">
+
+            <div class="icon">🖥️</div>
+
+            <h3>
+                Diagnóstico Computarizado
+            </h3>
+
+            <p>
+                Diagnóstico mediante escáner avanzado
+                para identificar fallas electrónicas
+                de manera precisa.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="icon">⚙️</div>
+
+            <h3>
+                Programación
+            </h3>
+
+            <p>
+                Programación y configuración de
+                computadores y módulos automotrices.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="icon">🔧</div>
+
+            <h3>
+                Instalación
+            </h3>
+
+            <p>
+                Instalación de computadores,
+                módulos y diferentes componentes.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="icon">💻</div>
+
+            <h3>
+                Venta de Computadores
+            </h3>
+
+            <p>
+                Computadores y soluciones electrónicas
+                para diferentes vehículos.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- PRODUCTOS -->
+
+<section class="section products" id="productos">
+
+    <div class="section-title">
+
+        <h2>
+            PARTES <span>ELÉCTRICAS</span>
+        </h2>
+
+        <p>
+            Componentes para diferentes sistemas automotrices
+        </p>
+
+    </div>
+
+
+    <div class="product-grid">
+
+        <div class="product">
+            <div class="product-icon">🛡️</div>
+            <h3>Airbags</h3>
+        </div>
+
+        <div class="product">
+            <div class="product-icon">⚙️</div>
+            <h3>Módulos</h3>
+        </div>
+
+        <div class="product">
+            <div class="product-icon">📡</div>
+            <h3>Sensores</h3>
+        </div>
+
+        <div class="product">
+            <div class="product-icon">🌬️</div>
+            <h3>Flujos de aire</h3>
+        </div>
+
+        <div class="product">
+            <div class="product-icon">⏱️</div>
+            <h3>Timers</h3>
+        </div>
+
+        <div class="product">
+            <div class="product-icon">🔑</div>
+            <h3>Suicheras</h3>
+        </div>
+
+        <div class="product">
+            <div class="product-icon">🔌</div>
+            <h3>Pachas</h3>
+        </div>
+
+        <div class="product">
+            <div class="product-icon">💨</div>
+            <h3>Blowers</h3>
+        </div>
+
+        <div class="product">
+            <div class="product-icon">⚡</div>
+            <h3>Cuerpos de aceleración</h3>
+        </div>
+
+        <div class="product">
+            <div class="product-icon">🔧</div>
+            <h3>Inyectores</h3>
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- CONFIANZA -->
+
+<section class="section trust">
+
+    <div class="trust-box">
+
+        <h2>
+            PRECISIÓN. <span>TRANSPARENCIA.</span> CONFIANZA.
+        </h2>
+
+        <p>
+            En S&M INJECTION trabajamos para ofrecer soluciones
+            precisas en electrónica automotriz. Nuestro objetivo
+            es brindar un servicio transparente, explicar cada
+            proceso y generar confianza en nuestros clientes.
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<!-- CONTACTO -->
+
+<section class="section contact" id="contacto">
+
+    <div class="section-title">
+
+        <h2>
+            <span>VISÍTANOS</span>
+        </h2>
+
+        <p>
+            Estamos ubicados en el 7 de Agosto, Bogotá D.C.
+        </p>
+
+    </div>
+
+
+    <div class="contact-container">
+
+
+        <div class="contact-box">
+
+            <h3>📍 Nuestra ubicación</h3>
+
+            <p>
+                <strong>Dirección:</strong><br>
+                Calle 65 # 28A-68<br>
+                Barrio 7 de Agosto<br>
+                Bogotá D.C.
+            </p>
+
+            <br>
+
+            <a class="btn"
+               href="https://maps.app.goo.gl/zHQkfVE9PBnKwtms9"
+               target="_blank">
+                ABRIR GOOGLE MAPS
+            </a>
+
+        </div>
+
+
+        <div class="contact-box">
+
+            <h3>🕐 Horarios</h3>
+
+            <p>
+                <strong>Lunes a viernes:</strong><br>
+                8:00 AM – 6:00 PM
+            </p>
+
+            <p>
+                <strong>Sábados:</strong><br>
+                8:00 AM – 4:00 PM
+            </p>
+
+            <p>
+                <strong>Domingos y festivos:</strong><br>
+                Cerrado
+            </p>
+
+            <br>
+
+            <a class="btn"
+               href="https://wa.me/573057424133"
+               target="_blank">
+                ESCRIBIR POR WHATSAPP
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <p>
+        © 2026 <strong>S&M INJECTION</strong> —
+        Computadores y Partes Eléctricas
+    </p>
+
+    <p>
+        Bogotá D.C. • Barrio 7 de Agosto
+    </p>
+
+</footer>
+
+
+
+<!-- WHATSAPP -->
+
+<a class="whatsapp"
+   href="https://wa.me/573057424133"
+   target="_blank"
+   title="Escribir por WhatsApp">
+
+    ☎
+
+</a>
+
+
+</body>
+</html>
